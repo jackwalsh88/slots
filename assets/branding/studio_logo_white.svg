@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300">
+<g transform="translate(30 30) scale(2.4)" fill="#ffffff">
+  <path d="M42 46 C33 28 50 6 80 6 C68 14 58 26 54 42 Z"/>
+  <path d="M94 22 C93 50 76 76 50 81 C30 85 16 70 19 53 C21 44 30 39 40 46 C52 49 62 42 71 35 C79 30 87 25 94 22 Z"/>
+  <path d="M56 46 l4 -6 l2 7 z M66 40 l4 -6 l2 7 z M76 33 l4 -6 l2 6 z"/>
+  <path d="M22 76 C18 82 14 88 12 94 C16 98 22 98 26 96 C29 90 32 85 36 80 Z"/>
+</g>
+<text x="300" y="170" font-family="Inter Display, Inter, sans-serif" font-weight="800" font-size="120" letter-spacing="4" fill="#ffffff">LOBSTER</text>
+<text x="306" y="250" font-family="Inter Display, Inter, sans-serif" font-weight="600" font-size="58" letter-spacing="30" fill="#ffffff">MEDIA</text>
+</svg>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Odyssey: Voyage of Fortune — Loader</title>
+<style>
+  /* Reference loader: real progress, no external hosts, no Engine/Stake branding. */
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #060c1c; }
+  .loader { position: fixed; inset: 0; display: grid; place-items: center;
+    background: radial-gradient(ellipse at 50% 42%, #1a3566 0%, #060c1c 70%); }
+  .stack { display: flex; flex-direction: column; align-items: center; gap: 4vmin; width: min(70vw, 620px); }
+  .logo { position: relative; width: 100%; }
+  .logo img { width: 100%; display: block; animation: breathe 2.4s ease-in-out infinite; }
+  .logo::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,240,200,.55) 50%, transparent 60%) no-repeat;
+    background-size: 250% 100%; animation: shine 2.4s ease-in-out infinite;
+    -webkit-mask: url(logo.webp) center / contain no-repeat; mask: url(logo.webp) center / contain no-repeat; }
+  .track { position: relative; width: 85%; height: 8px; border-radius: 5px;
+    background: #281a0c; border: 1px solid #c9913a; overflow: visible; }
+  .fill { height: 100%; width: var(--p, 0%); border-radius: 4px;
+    background: linear-gradient(90deg, rgba(65,242,255,0), #41f2ff);
+    box-shadow: 0 0 10px #41f2ff; transition: width .25s ease-out; }
+  .fill::after { content: ""; position: absolute; left: var(--p, 0%); top: 50%; transform: translate(-30%, -50%);
+    border-left: 11px solid #aafcff; border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+  @keyframes breathe { 50% { filter: drop-shadow(0 0 18px rgba(60,200,255,.45)); } }
+  @keyframes shine { from { background-position: 150% 0; } 60%, to { background-position: -50% 0; } }
+  @media (prefers-reduced-motion: reduce) { .logo img, .logo::after { animation: none; } }
+</style>
+</head>
+<body>
+  <div class="loader" role="progressbar" aria-label="Loading" aria-valuemin="0" aria-valuemax="100">
+    <div class="stack">
+      <div class="logo"><img src="logo.webp" alt="Odyssey: Voyage of Fortune"></div>
+      <div class="track"><div class="fill"></div></div>
+    </div>
+  </div>
+  <script>
+    // Demo only: in the game, call setProgress() from the asset loader (0–1).
+    const root = document.querySelector('.loader');
+    function setProgress(v) {
+      const pct = Math.round(Math.max(0, Math.min(1, v)) * 100);
+      root.style.setProperty('--p', pct + '%'); root.setAttribute('aria-valuenow', pct);
+    }
+    let v = 0; const t = setInterval(() => { v += 0.02; setProgress(v); if (v >= 1) clearInterval(t); }, 60);
+  </script>
+</body>
+</html>
